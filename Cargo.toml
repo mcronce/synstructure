@@ -20,7 +20,7 @@ proc-macro = ["proc-macro2/proc-macro", "syn/proc-macro", "quote/proc-macro"]
 [dependencies]
 proc-macro2 = { version = "1", default-features = false }
 quote = { version = "1", default-features = false }
-unicode-xid = "0.2"
+unicode-ident = "1"
 
 [dependencies.syn]
 version = "1"

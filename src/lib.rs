@@ -171,8 +171,6 @@ use quote::{format_ident, quote_spanned, ToTokens};
 #[doc(hidden)]
 pub use quote::quote;
 
-use unicode_xid::UnicodeXID;
-
 use proc_macro2::{Span, TokenStream, TokenTree};
 
 // NOTE: This module has documentation hidden, as it only exports macros (which
@@ -249,7 +247,7 @@ fn fetch_generics<'a>(set: &[bool], generics: &'a Generics) -> Vec<&'a Ident> {
 fn sanitize_ident(s: &str) -> Ident {
     let mut res = String::with_capacity(s.len());
     for mut c in s.chars() {
-        if !UnicodeXID::is_xid_continue(c) {
+        if !unicode_ident::is_xid_continue(c) {
             c = '_'
         }
         // Deduplicate consecutive _ characters.
